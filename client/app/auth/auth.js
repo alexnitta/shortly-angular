@@ -5,7 +5,8 @@ angular.module('shortly.auth', [])
 
 .controller('AuthController', function ($scope, $window, $location, Auth) {
   $scope.user = {};
-  $scope.isEntered = false;
+  $scope.signinAttempt = false;
+  $scope.signupAttempt = false; 
 
   $scope.signin = function (isValid) {
     if (isValid) {
@@ -15,21 +16,27 @@ angular.module('shortly.auth', [])
           $location.path('/links');
         })
         .catch(function (error) {
+          $scope.signinAttempt = true;
           console.error(error);
         });
     } else {
-      $scope.isEntered = true;
+      $scope.signinAttempt = true;
     }
   };
 
-  $scope.signup = function () {
-    Auth.signup($scope.user)
-      .then(function (token) {
-        $window.localStorage.setItem('com.shortly', token);
-        $location.path('/links');
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+  $scope.signup = function (isValid) {
+    if (isValid) {
+      Auth.signup($scope.user)
+        .then(function (token) {
+          $window.localStorage.setItem('com.shortly', token);
+          $location.path('/links');
+        })
+        .catch(function (error) {
+          $scope.signupAttempt = true;
+          console.error(error);
+        });
+    } else {
+      $scope.signupAttempt = true;
+    }
   };
 });
