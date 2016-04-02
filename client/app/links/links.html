@@ -1,10 +1,31 @@
 <div id='container'>
   <a href="#/shorten">Shorten link</a>
   <h1>Links</h1> 
-  <ul>
-    <li ng-repeat="link in data.links track by $index" ng-click="visitLink(link)">
-      {{ link }}
-    </li>
-  </ul>
+  <table>
+    <thead>
+      <tr class="link-header">
+        <td>Link</td>
+        <td>Title</td>
+        <td>Short Link</td>
+        <td>Visits</td>
+      </tr>
+    </thead>
+    <tbody>  
+      <tr ng-repeat="link in data.links track by $index" ng-click="visitLink(link)">
+        <td>
+        {{ link.url }}
+        </td>
+        <td>
+        {{ link.title.slice(0, 50); }}...
+        </td>
+        <td>
+        <a ng-href='{{ link.baseUrl }}/{{ link.code }}'>{{ link.baseUrl }}/{{ link.code }}</a>
+        </td>
+        <td>
+        {{ link.visits }}
+        </td>
+      </tr>  
+    </tbody>
+  </table>
 </div>
 <!-- [{},{},{}] -->

@@ -146,3 +146,6 @@ input[type=url]:focus {
   clear: both;
 }
 
+.link-header {
+  font-weight: 700;
+}

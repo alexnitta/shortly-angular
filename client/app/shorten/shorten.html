@@ -1,10 +1,14 @@
 <div id='container'>
   <a href="#/links">My links</a>
   <h1>Shorten</h1> 
-  <!-- <form name="linkInput" ng-submit='addOne()'> -->
-    <input type='text'ng-model='url'>
-    <button ng-click='addLink(url)'>shorten</button>
-  <!-- </form> -->
+  <form name='form'>
+    <input type='url' ng-model='url' name='uUrl' />
+    <input type='submit' name='submit' value='submit' ng-click='addLink(url, $event)'/>
+    <div ng-show='form.$submitted'>  
+      <span ng-show='form.uUrl.$error.required'>Enter a Url</span>
+    </div>
+    <div ng-show='form.uUrl.$dirty'>
+      <span ng-show='form.uUrl.$error.url'>Not a valid URL, yet . . .</span>
+    </div>
+  </form>
 </div>
-
-
