@@ -4,7 +4,9 @@ angular.module('shortly.shorten', [])
   $scope.link = {};
   $location.path('/shorten');
   $scope.addLink = function(link) {
-    Links.addOne(link).then(function(result) { 
+    console.log('Link in shorten.js', link);
+    var url = {url: link};
+    Links.addOne(url).then(function(result) { 
       $scope.url = '';
       console.log('this is the result from shorten: ', result);
     }).catch(function(err) {

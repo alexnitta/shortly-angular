@@ -17,6 +17,8 @@ angular.module('shortly.services', [])
       data: link
     }).then(function (resp) {
       return resp;
+    }).catch(function(err) { 
+      console.log('Error in addOne function: ', err); 
     });
   };
 
