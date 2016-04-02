@@ -2,7 +2,7 @@
   <a href="#/links">My links</a>
   <h1>Shorten</h1> 
   <form name='form'>
-    <input type='url' ng-model='url' name='uUrl' />
+    <input type='url' ng-model='url' placeholder='www.example.com' name='uUrl' />
     <input type='submit' name='submit' value='submit' ng-click='addLink(url, $event)'/>
     <div ng-show='form.$submitted'>  
       <span ng-show='form.uUrl.$error.required'>Enter a Url</span>

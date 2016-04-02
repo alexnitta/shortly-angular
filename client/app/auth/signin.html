@@ -2,9 +2,9 @@
   <h1>signin</h1>
   <form name="signinForm" ng-submit='signin(signinForm.$valid)'>
     <span>Username</span>
-    <input type='text' ng-model='user.username' name='uName' ng-required='true'>
+    <input type='text' ng-model='user.username' name='uName' placeholder='Joe' ng-required='true'>
     <span>Password</span>
-    <input type="password" ng-model='user.password' name='uPassword' ng-required='true'>
+    <input type="password" ng-model='user.password' name='uPassword' placeholder='secret...' ng-required='true'>
     <input type='submit' value='submit' />
     <span class='incorrect' ng-show='signinAttempt'>Username or Password incorrect</span>
   </form>
