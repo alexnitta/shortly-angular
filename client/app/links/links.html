@@ -11,7 +11,7 @@
       </tr>
     </thead>
     <tbody>  
-      <tr ng-repeat="link in data.links track by $index" ng-click="visitLink(link)">
+      <tr ng-repeat="link in data.links | orderBy:'-visits' track by $index" ng-click="visitLink(link)">
         <td>
         {{ link.url }}
         </td>
