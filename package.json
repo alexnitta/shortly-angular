@@ -44,6 +44,8 @@
     "sinon": "^1.17.2"
   },
   "dependencies": {
+    "angular": "^1.5.3",
+    "angular-ui-router": "^1.0.0-alpha.1",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.4.3",
     "express": "^4.4.5",

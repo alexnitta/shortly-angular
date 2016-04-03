@@ -3,33 +3,63 @@ angular.module('shortly', [
   'shortly.links',
   'shortly.shorten',
   'shortly.auth',
-  'ngRoute'
+  'ngRoute',
+  'ui.router'
 ])
-.config(function ($routeProvider, $httpProvider) {
-  $routeProvider
-    .when('/', {
+.config(function ($routeProvider, $httpProvider, $stateProvider, $urlRouterProvider) {
+  
+  $urlRouterProvider.otherwise('/links');
+
+  $stateProvider
+    .state('links', {
+      templateUrl: 'app/links/links.html',
+      url: '/links',
+      controller: 'LinksController'
+    })
+    .state('links.child', {
+      templateUrl: '<h1>{{ name }}</h1>',
+      url: '/child'
+    })
+    .state('shorten', {
+      templateUrl: 'app/shorten/shorten.html',
+      url: '/shorten',
+      controller: 'ShortenController'
+    })
+    .state('signin', {
       templateUrl: 'app/auth/signin.html',
+      url: '/signin',
       controller: 'AuthController'
     })
-    .when('/signin', {
-      templateUrl: 'app/auth/signin.html',
-      controller: 'AuthController'
-    })
-    .when('/signup', {
+    .state('signup', {
       templateUrl: 'app/auth/signup.html',
+      url: '/signup',
       controller: 'AuthController'
     })  
-    .when('/shorten', {
-      templateUrl: 'app/shorten/shorten.html',
-      controller: 'ShortenController'
-    }).when('/links', {
-      templateUrl: 'app/links/links.html',
-      controller: 'LinksController'
-    })
-    .otherwise({
-      templateUrl: 'app/links/links.html',
-      controller: 'LinksController'
-    })
+
+  // $routeProvider
+  //   .when('/', {
+  //     templateUrl: 'app/auth/signin.html',
+  //     controller: 'AuthController'
+  //   })
+  //   .when('/signin', {
+  //     templateUrl: 'app/auth/signin.html',
+  //     controller: 'AuthController'
+  //   })
+  //   .when('/signup', {
+  //     templateUrl: 'app/auth/signup.html',
+  //     controller: 'AuthController'
+  //   })  
+  //   .when('/shorten', {
+  //     templateUrl: 'app/shorten/shorten.html',
+  //     controller: 'ShortenController'
+  //   }).when('/links', {
+  //     templateUrl: 'app/links/links.html',
+  //     controller: 'LinksController'
+  //   })
+  //   .otherwise({
+  //     templateUrl: 'app/links/links.html',
+  //     controller: 'LinksController'
+  //   })
 ;
 
     // We add our $httpInterceptor into the array
